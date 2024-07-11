@@ -58,8 +58,11 @@ export class HomeComponent {
   housingService: HousingService = inject(HousingService);
 
   constructor() {
-    this.housingLocationList = this.housingService.getAllHousingLocations();
-    this.filteredLocationList = this.housingLocationList;
+    this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocation[]) => {
+      console.log(housingLocationList)
+      this.housingLocationList = housingLocationList;
+      this.filteredLocationList = housingLocationList;
+    });
   }
 
   filterResults(event: Event) {
