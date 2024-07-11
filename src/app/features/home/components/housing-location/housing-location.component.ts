@@ -10,9 +10,9 @@ import {HousingLocation} from 'types'
     RouterOutlet
   ],
   template: `
-    <section class="bg-purple-200 rounded-md overflow-hidden">
+    <section class="bg-purple-200 max-w-[400px] rounded-lg overflow-hidden">
       <img
-        class="h-[250px] w-full "
+        class="h-[250px] w-full"
         [src]="housingLocation.photo"
         alt="Exterior photo of {{ housingLocation.name }}"
         crossorigin
@@ -21,11 +21,16 @@ import {HousingLocation} from 'types'
         <h2 class="text-purple-600 font-bold">
           {{ housingLocation.name }}
         </h2>
-        <p class="before:content-[url(/assets/location-pin.svg)]">
+        <p class="mb-2 before:content-[url(/assets/location-pin.svg)]">
           {{ housingLocation.city }}, {{ housingLocation.state }}
         </p>
+        <a
+          [routerLink]="['/details', housingLocation.id]"
+          class="text-white bg-purple-500 hover:bg-purple-400 transition-colors py-2 px-4 inline-block rounded-md"
+        >
+          Learn More
+        </a>
       </div>
-      <a [routerLink]="['/details', housingLocation.id]">Learn More</a>
     </section>
   `
 })
